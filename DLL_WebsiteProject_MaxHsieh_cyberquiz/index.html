@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <title>SME Cybersecurity Self-Evaluation Quiz</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" >
+
+    <!-- Chart.js (Radar chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm"
+    >
+      <div class="container-fluid px-5">
+        <a class="navbar-brand fw-semibold" href="#hero">
+          Free Cybersecurity Quiz for SMEs</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="mainNav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto gap-lg-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="#quiz">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="hero" class="py-5 hero-gradient">
+      <div class="container-fluid px-5">
+        <div class="row align-items-center g-4">
+          <!-- Left side -->
+          <div class="col-lg-7 hero-left">
+            <h1 class="hero-title text-white">
+              <span>Cybersecurity</span><br >
+              <span>Self-Evaluation</span><br >
+              <span>Quiz</span>
+            </h1>
+
+            <p class="hero-subtitle">For SMEs with fewer than 50 employees</p>
+
+            <p class="lead hero-description mb-4">
+              <span
+                >Answer a short quiz based on a simplified NIST Cybersecurity
+                Framework.</span
+              ><br >
+              <span
+                >Get a radar chart and guidance on what to improve next.</span
+              >
+            </p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-light btn-lg" href="#quiz">Start the quiz</a>
+              <a class="btn btn-outline-light btn-lg" href="#about"
+                >Why this exists</a
+              >
+            </div>
+          </div>
+          <!-- Right side -->
+          <div class="col-lg-5">
+            <div class="card glass-card border-0 hero-side-card">
+              <div class="card-body">
+                <h2 class="h5 fw-semibold mb-3">How it works</h2>
+                <ol class="mb-0 ps-3">
+                  <li>Answer 12 questions (2 per NIST function)</li>
+                  <li>
+                    Get scores for Govern, Identify, Protect, Detect, Respond,
+                    Recover
+                  </li>
+                  <li>See strengths & weaknesses on a radar chart</li>
+                  <li>Read suggested next steps</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="py-5">
+      <!-- Quiz -->
+      <section id="quiz" class="py-5">
+        <div class="mb-5">
+          <section class="mb-4">
+            <div class="card border-0 shadow-sm section-header">
+              <div class="card-body p-4">
+                <h2 class="h4 fw-semibold mb-2">
+                  Cybersecurity self-evaluation
+                </h2>
+                <p class="mb-0 text-white opacity-100">
+                  Answer 12 questions to assess your current cybersecurity
+                  practices. There are no right or wrong answers.Choose the
+                  option that best matches your organization today.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div
+                    class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3"
+                  >
+                    <span
+                      id="progressBadge"
+                      class="badge text-bg-secondary px-3 py-2"
+                      >Step 1 of 3</span
+                    >
+                  </div>
+
+                  <!-- Carousel quiz (steps) -->
+                  <div
+                    id="quizCarousel"
+                    class="carousel slide"
+                    data-bs-interval="false"
+                    data-bs-touch="false"
+                  >
+                    <div class="carousel-inner">
+                      <!-- Slide 1 (Q1–Q4) -->
+                      <div class="carousel-item active">
+                        <div class="quiz-slide">
+                          <h3 class="h5 fw-semibold mb-3">Govern & Identify</h3>
+
+                          <!-- Q1 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              1) Do you assign cybersecurity responsibility
+                              (even part-time) to a specific role/person?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 1"
+                            >
+                              <label class="answer-option">
+                                <input type="radio" name="q1" value="0" > No
+                                one is responsible
+                              </label>
+                              <label class="answer-option">
+                                <input type="radio" name="q1" value="1" >
+                                Informal / unclear responsibility
+                              </label>
+                              <label class="answer-option">
+                                <input type="radio" name="q1" value="2" > Some
+                                responsibility exists, not documented
+                              </label>
+                              <label class="answer-option">
+                                <input type="radio" name="q1" value="3" >
+                                Clearly assigned and communicated
+                              </label>
+                              <label class="answer-option">
+                                <input type="radio" name="q1" value="4" >
+                                Clearly assigned with regular follow-up
+                              </label>
+                            </div>
+                            <small class="text-muted">Category: GOVERN</small>
+                          </div>
+
+                          <!-- Q2 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              2) Do you have simple cybersecurity rules/policies
+                              (passwords, access, updates, data handling)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 2"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q2" value="0" >
+                                No</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q2" value="1" > A
+                                few unwritten rules</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q2" value="2" >
+                                Basic rules exist but not shared widely</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q2" value="3" >
+                                Written and shared with staff</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q2" value="4" >
+                                Written + reviewed at least yearly</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: GOVERN</small>
+                          </div>
+
+                          <!-- Q3 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              3) Do you keep an up-to-date list of key IT assets
+                              (laptops, servers, cloud services, critical
+                              software)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 3"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q3" value="0" > No
+                                list</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q3" value="1" >
+                                Partial / outdated</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q3" value="2" >
+                                Mostly complete, updated sometimes</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q3" value="3" >
+                                Complete and updated regularly</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q3" value="4" >
+                                Complete + includes owners/criticality</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: IDENTIFY</small>
+                          </div>
+
+                          <!-- Q4 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              4) Do you know what data is most important
+                              (customer data, financial data, IP) and where it
+                              is stored?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 4"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q4" value="0" > Not
+                                really</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q4" value="1" > Some
+                                understanding</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q4" value="2" >
+                                Mostly known but not documented</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q4" value="3" >
+                                Documented data locations and importance</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q4" value="4" >
+                                Documented + reviewed when systems change</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: IDENTIFY</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Slide 2 (Q5–Q8) -->
+                      <div class="carousel-item">
+                        <div class="quiz-slide">
+                          <h3 class="h5 fw-semibold mb-3">Protect & Detect</h3>
+
+                          <!-- Q5 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              5) Do you use multi-factor authentication (MFA) on
+                              important accounts (email, admin, banking, cloud)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 5"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q5" value="0" >
+                                No</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q5" value="1" > Only
+                                on a few accounts</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q5" value="2" > On
+                                most important accounts</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q5" value="3" > On
+                                all important accounts</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q5" value="4" >
+                                Enforced + monitored for exceptions</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: PROTECT</small>
+                          </div>
+
+                          <!-- Q6 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              6) Are devices and software updated quickly
+                              (security patches for OS, apps, browsers)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 6"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q6" value="0" >
+                                Rarely updated</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q6" value="1" >
+                                Updated sometimes</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q6" value="2" >
+                                Updated monthly-ish</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q6" value="3" >
+                                Updated quickly (within ~2 weeks)</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q6" value="4" >
+                                Automated/managed updates + tracking</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: PROTECT</small>
+                          </div>
+
+                          <!-- Q7 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              7) Do you have basic monitoring for suspicious
+                              activity (alerts, logs, unusual sign-ins, includes
+                              basic alerts from email or cloud services)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 7"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q7" value="0" > No
+                                monitoring</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q7" value="1" > Only
+                                if something breaks</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q7" value="2" > Some
+                                alerts enabled (email/cloud)</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q7" value="3" >
+                                Regular review of alerts/logs</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q7" value="4" >
+                                Monitoring + defined escalation steps</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: DETECT</small>
+                          </div>
+
+                          <!-- Q8 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              8) Do staff know how to report suspicious emails
+                              or unusual device behavior?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 8"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q8" value="0" > No
+                                process</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q8" value="1" >
+                                Informal “tell someone”</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q8" value="2" >
+                                Basic instructions exist</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q8" value="3" >
+                                Clear reporting channel + reminders</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q8" value="4" >
+                                Trained + tested periodically</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: DETECT</small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Slide 3 (Q9–Q12) -->
+                      <div class="carousel-item">
+                        <div class="quiz-slide">
+                          <h3 class="h5 fw-semibold mb-3">Respond & Recover</h3>
+
+                          <!-- Q9 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              9) Do you have a simple incident plan (what to do
+                              if hacked, who to call, what to disconnect)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 9"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q9" value="0" > No
+                                plan</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q9" value="1" >
+                                Talked about, not written</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q9" value="2" >
+                                Basic written checklist</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q9" value="3" >
+                                Checklist + roles/contact list</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q9" value="4" >
+                                Practiced or reviewed regularly</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: RESPOND</small>
+                          </div>
+
+                          <!-- Q10 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              10) If an incident happens, do you know how to
+                              communicate internally and to customers/partners
+                              (if needed)?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 10"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q10" value="0" > No
+                                idea</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q10" value="1" >
+                                Would improvise</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q10" value="2" >
+                                Some templates or guidance</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q10" value="3" >
+                                Clear comms owners + steps</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q10" value="4" >
+                                Tested + considers legal/privacy needs</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: RESPOND</small>
+                          </div>
+
+                          <!-- Q11 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              11) Do you back up important data and verify you
+                              can restore it?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 11"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q11" value="0" > No
+                                backups</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q11" value="1" >
+                                Backups sometimes</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q11" value="2" >
+                                Regular backups</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q11" value="3" >
+                                Regular + protected backups</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q11" value="4" >
+                                Tested restores + offline/immutable
+                                option</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: RECOVER</small>
+                          </div>
+
+                          <!-- Q12 -->
+                          <div class="question-block">
+                            <p class="question-text">
+                              12) After issues occur (outages, near-misses), do
+                              you review what happened and improve processes?
+                            </p>
+                            <div
+                              class="answers"
+                              role="group"
+                              aria-label="Question 12"
+                            >
+                              <label class="answer-option"
+                                ><input type="radio" name="q12" value="0" >
+                                No</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q12" value="1" >
+                                Occasionally</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q12" value="2" >
+                                Usually, but informal</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q12" value="3" >
+                                Structured review + tracked actions</label
+                              >
+                              <label class="answer-option"
+                                ><input type="radio" name="q12" value="4" >
+                                Continuous improvement culture</label
+                              >
+                            </div>
+                            <small class="text-muted">Category: RECOVER</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Carousel controls -->
+                    <div class="d-flex gap-2 mt-3">
+                      <button
+                        id="prevBtn"
+                        class="btn btn-outline-secondary"
+                        type="button"
+                        data-bs-target="#quizCarousel"
+                        data-bs-slide="prev"
+                      >
+                        ← Previous
+                      </button>
+
+                      <button
+                        id="nextBtn"
+                        class="btn btn-primary ms-auto"
+                        type="button"
+                        data-bs-target="#quizCarousel"
+                        data-bs-slide="next"
+                      >
+                        Next →
+                      </button>
+
+                      <button
+                        id="submitBtn"
+                        class="btn btn-success ms-auto d-none"
+                        type="button"
+                      >
+                        Submit & See Results
+                      </button>
+                    </div>
+
+                    <div
+                      id="quizError"
+                      class="alert alert-danger mt-3 d-none"
+                      role="alert"
+                    >
+                      Please answer all questions before viewing results.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Side panel -->
+            <div class="col-lg-5">
+              <div class="sticky-sidebar">
+                <div class="card border-0 shadow-sm">
+                  <div class="card-body p-4">
+                    <h3 class="h5 fw-semibold">Answering tips</h3>
+                    <ul class="text-muted mb-0">
+                      <li>
+                        Pick what’s true today, not what you want it to be.
+                      </li>
+                      <li>
+                        If unsure, choose the option that best reflects everyday
+                        practice.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="card border-0 shadow-sm mt-4">
+                  <div class="card-body p-4">
+                    <h3 class="h5 fw-semibold">Privacy note</h3>
+                    <p class="text-muted mb-0">
+                      This demo stores answers only in your browser while you
+                      use the page. It does not send data to a server.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="pt-2 d-none">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <div
+              class="d-flex align-items-center justify-content-between flex-wrap gap-2"
+            >
+              <h2 class="h4 fw-semibold mb-0">Your results</h2>
+              <button
+                id="resetBtn"
+                class="btn btn-outline-danger btn-sm"
+                type="button"
+              >
+                Reset quiz
+              </button>
+            </div>
+
+            <p class="text-muted mt-2 mb-4">
+              The radar chart shows your current maturity across the six NIST
+              functions. Higher is stronger.
+            </p>
+
+            <div class="row g-4 align-items-start">
+              <div class="col-lg-6">
+                <div class="chart-wrap">
+                  <canvas
+                    id="radarChart"
+                    aria-label="Radar chart results"
+                    role="img"
+                  ></canvas>
+                </div>
+                <div id="scoreBadges" class="d-flex flex-wrap gap-2 mt-3"></div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="p-3 p-lg-4 rounded-3 bg-soft">
+                  <h3 class="h5 fw-semibold mb-2">
+                    What this means for your company:
+                  </h3>
+                  <div id="summaryText" class="text-body"></div>
+
+                  <hr class="my-4" >
+
+                  <h4 class="h6 fw-semibold">Suggested next steps</h4>
+                  <ul id="nextSteps" class="mb-0"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-info mt-4 mb-0">
+              <strong>Reminder:</strong> This is a simplified self-assessment
+              for learning. If you handle sensitive data or face regulatory
+              requirements, consider professional guidance.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section id="about" class="py-5">
+      <div class="mb-5">
+        <section class="mb-4">
+          <div class="card border-0 shadow-sm section-header">
+            <div class="card-body p-4">
+              <h2 class="h4 fw-semibold mb-2">About this project</h2>
+              <p class="mb-0 text-white opacity-100">
+                This website is a
+                <strong>student-built cybersecurity self-evaluation</strong>
+                created to help small organizations think about their current
+                cybersecurity practices. It is for educational use and does not
+                replace a professional security assessment.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="container">
+        <div class="row g-4">
+          <!-- Content -->
+          <div class="col-lg-8">
+            <section class="card border-0 shadow-sm mb-4">
+              <div class="card-body p-4">
+                <h2 class="h4 fw-semibold">
+                  Why the focus on SMEs under 50 employees
+                </h2>
+                <p class="text-muted">
+                  This project focuses on organizations with
+                  <strong>fewer than 50 employees</strong>, which aligns with
+                  the European Union definition of micro and small enterprises.
+                  Companies in this size range often face resource constraints,
+                  such as limited time, budget, and access to cybersecurity
+                  expertise.
+                </p>
+              </div>
+            </section>
+
+            <section class="card border-0 shadow-sm mb-4">
+              <div class="card-body p-4">
+                <h2 class="h4 fw-semibold">
+                  NIST Cybersecurity Framework (CSF)
+                </h2>
+                <p class="text-muted">
+                  The NIST Cybersecurity Framework is a widely used structure
+                  for managing cybersecurity risk across organizations of
+                  different sizes and sectors. It organizes cybersecurity
+                  activities into six core functions that help organizations
+                  understand and improve their security posture.
+                </p>
+                <div class="text-center mt-4">
+                  <img
+                    src="images/nist-csf.png"
+                    alt="NIST Cybersecurity Framework showing Govern, Identify, Protect, Detect, Respond, Recover"
+                    class="img-fluid"
+                    style="max-width: 420px"
+                  >
+                </div>
+
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>GOVERN</strong>
+                      <p class="text-muted mb-0">
+                        Establish responsibility, policies, and oversight.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>IDENTIFY</strong>
+                      <p class="text-muted mb-0">
+                        Understand assets, data, and risks.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>PROTECT</strong>
+                      <p class="text-muted mb-0">
+                        Apply safeguards such as MFA, patching, and access
+                        control.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>DETECT</strong>
+                      <p class="text-muted mb-0">
+                        Identify suspicious activity and potential incidents.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>RESPOND</strong>
+                      <p class="text-muted mb-0">
+                        Take action during cybersecurity incidents.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="p-3 rounded-3 bg-soft h-100">
+                      <strong>RECOVER</strong>
+                      <p class="text-muted mb-0">
+                        Restore operations and improve resilience.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                <h2 class="h4 fw-semibold">
+                  Framework simplification for SMEs
+                </h2>
+                <p class="text-muted mb-0">
+                  The NIST CSF can be detailed and resource-intensive to
+                  implement. This project simplifies the framework into
+                  <strong>12 practical questions</strong> (two per function),
+                  focusing on controls that are realistic for small
+                  organizations. The goal is to provide an accessible and easy
+                  method for SMEs to do a quick check. It is not a full audit,
+                  but a simple starting point.
+                </p>
+              </div>
+            </section>
+          </div>
+
+          <!-- Side panel -->
+          <div class="col-lg-4">
+            <div class="sticky-sidebar">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <h3 class="h5 fw-semibold">Sources & references</h3>
+                  <ul class="text-muted mb-0">
+                    <li>
+                      <a
+                        href="https://single-market-economy.ec.europa.eu/smes/sme-definition_en"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        European Commission: SME definition
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="https://www.nist.gov/cyberframework"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        NIST Cybersecurity Framework (CSF)
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="https://www.enisa.europa.eu/topics/awareness-and-cyber-hygiene/smes-cybersecurity"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        ENISA: cybersecurity guidance for SMEs
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="https://www.w3.org/WAI/standards-guidelines/wcag/"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        W3C: HTML & WCAG accessibility guidelines
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / bottom bar -->
+    <footer class="footer-bar mt-auto">
+      <div
+        class="container py-3 d-flex flex-wrap align-items-center justify-content-between gap-2"
+      >
+        <span class="small"> Student project, educational use only. </span>
+        <span class="small">
+          Content licensed under
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener"
+            >CC BY 4.0</a
+          >.
+        </span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
